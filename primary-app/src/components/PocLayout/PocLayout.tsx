@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Footer } from "../Footer/Footer";
 import styles from "./PocLayout.module.css";
 
@@ -11,7 +12,7 @@ export function PocLayout(props: PocLayoutProps) {
       <header className={styles["poc-layout-header"]}>
         <div className={styles["poc-layout-header__container"]}>
           <p className={styles["poc-layout-header__title"]}>
-            <a href="/">Nuances of Iframe</a>
+            <Link href="/">Nuances of Iframe</Link>
           </p>
         </div>
       </header>

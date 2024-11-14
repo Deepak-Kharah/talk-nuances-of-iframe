@@ -1,5 +1,4 @@
 import { PocLayout } from "@/components/PocLayout/PocLayout";
-import Head from "next/head";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
@@ -39,10 +38,6 @@ export default function LivePreview() {
 
   return (
     <>
-      <Head>
-        <title>Main App | LP POC w/ Post message</title>
-      </Head>
-
       <PocLayout>
         <main className={pocStyles["poc-container"]}>
           <div>

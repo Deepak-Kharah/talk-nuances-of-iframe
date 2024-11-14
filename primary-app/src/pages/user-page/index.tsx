@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
@@ -23,25 +22,20 @@ export default function Home() {
     };
   }, []);
   return (
-    <>
-      <Head>
-        <title>User App • LP POC w/ sockets</title>
-      </Head>
-      <main className={pocStyles["poc-container"]}>
-        <div>
-          <h1 className={pocStyles["poc-title"]}>I am the Iframe</h1>
-          <p className={pocStyles["url-info"]}>URL: {url}</p>
-        </div>
+    <main className={pocStyles["poc-container"]}>
+      <div>
+        <h1 className={pocStyles["poc-title"]}>I am the Iframe</h1>
+        <p className={pocStyles["url-info"]}>URL: {url}</p>
+      </div>
 
-        <div>
-          <h2 className={pocStyles["messages-title"]}>Messages</h2>
-          <ul className={pocStyles.messages}>
-            {messages.map((message, index) => (
-              <li key={index}>{message}</li>
-            ))}
-          </ul>
-        </div>
-      </main>
-    </>
+      <div>
+        <h2 className={pocStyles["messages-title"]}>Messages</h2>
+        <ul className={pocStyles.messages}>
+          {messages.map((message, index) => (
+            <li key={index}>{message}</li>
+          ))}
+        </ul>
+      </div>
+    </main>
   );
 }
