@@ -1,4 +1,6 @@
 import { PocLayout } from "@/components/PocLayout/PocLayout";
+import { pocs } from "@/content/pocs";
+import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
@@ -73,6 +75,31 @@ export default function LivePreview() {
             ref={iframeRef}
             src="/user-page-with-hash"
           />
+
+          <details className={pocStyles["poc-detail"]}>
+            <summary>Explanation</summary>
+            <div>
+              <p>
+                In this POC, we used the channel ID to segregate all the socket
+                connections to ensure the connection remains private. Unlike the{" "}
+                <Link href={pocs[0].link}>previous POC</Link>, if you duplicate
+                this tab and send the message, the message will not be visible
+                to the other tabs.
+              </p>
+              <p>
+                We are generating this hash on every session to ensure that the
+                hash remains unique. In this example, we set the hash directly
+                to the iframe&apos;s window object.
+              </p>
+              <p>
+                We can perform this action as the same origin hosts both the
+                parent and the iframes. The browser throws an error when we try
+                to use this method on Windows with a different origin, as
+                demonstrated in the{" "}
+                <Link href={pocs[2].link}>following POC</Link>.
+              </p>
+            </div>
+          </details>
         </main>
       </PocLayout>
     </>
