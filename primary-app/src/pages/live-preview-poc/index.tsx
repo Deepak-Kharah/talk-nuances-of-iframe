@@ -1,3 +1,5 @@
+import { PocLayout } from "@/components/PocLayout/PocLayout";
+import pocStyles from "../../styles/poc.module.css";
 import Head from "next/head";
 import { FormEvent, useRef } from "react";
 import { io } from "socket.io-client";
@@ -27,18 +29,37 @@ export default function LivePreview() {
         <title>Main App | LP POC w/ sockets</title>
       </Head>
 
-      <main>
-        <h1>Live preview with Socket</h1>
+      <PocLayout>
+        <main className={pocStyles["poc-container"]}>
+          <h1 className={pocStyles["poc-title"]}>Live preview with Socket</h1>
 
-        <h2>Send message</h2>
-        <form onSubmit={handleSubmit}>
-          <input name="message" type="text" placeholder="Type a message..." />
-          <button type="submit">Send</button>
-        </form>
+          <form className={pocStyles["message-form"]} onSubmit={handleSubmit}>
+            <span>
+              <label htmlFor="message" className={pocStyles["message-label"]}>
+                Send message
+              </label>
+              <input
+                className={pocStyles["message-input"]}
+                name="message"
+                type="text"
+                placeholder="Type a message..."
+              />
+            </span>
+            <button
+              className={pocStyles["message-send-message-action"]}
+              type="submit"
+            >
+              Send
+            </button>
+          </form>
 
-        <br />
-        <iframe ref={iframeRef} src="/user-page" width="600" height="400" />
-      </main>
+          <iframe
+            className={pocStyles["live-preview-window"]}
+            ref={iframeRef}
+            src="/user-page"
+          />
+        </main>
+      </PocLayout>
     </>
   );
 }

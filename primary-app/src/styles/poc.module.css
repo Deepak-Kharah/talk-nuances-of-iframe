@@ -1,0 +1,127 @@
+.poc-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+.url-info {
+  margin-top: 0.5rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: #6e7786;
+}
+
+.message-label,
+.messages-title {
+  font-weight: 500;
+  font-size: 1rem;
+  display: block;
+}
+
+ul.messages {
+  padding-top: 0.5rem;
+  list-style-type: none;
+  padding-inline: 0;
+  margin-block: 0;
+}
+
+.message-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: end;
+}
+
+.message-input {
+  border-width: 1px;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.message-input::placeholder {
+  color: #a0aec0;
+}
+
+.message-send-message-action {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background-color: #fff;
+  border-color: #e5e5e5;
+  border-width: 1px;
+  border-radius: calc(0.5rem - 2px);
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  background-image: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+main.poc-container {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+  width: 100%;
+  max-width: 100rem;
+  margin-inline: auto;
+}
+
+.message-send-message-action:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.message-send-message-action:hover {
+  background-color: #f5f5f5;
+}
+
+iframe.live-preview-window {
+  height: 20rem;
+  border-width: 1px;
+}
+
+@media (min-width: 700px) {
+  .poc-title {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+
+  .url-info {
+    font-size: 0.9rem;
+  }
+
+  .message-label,
+  .messages-title {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .poc-title {
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+  }
+
+  .url-info {
+    font-size: 1rem;
+  }
+
+  .message-label,
+  .messages-title {
+    font-size: 1.25rem;
+  }
+}

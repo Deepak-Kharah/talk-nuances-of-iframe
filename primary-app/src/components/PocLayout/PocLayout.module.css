@@ -1,0 +1,49 @@
+.default-styles,
+.default-styles * {
+  margin: initial;
+  padding: initial;
+  font-family: initial;
+  border-width: initial;
+  /* border-style: initial; */
+  border-color: initial;
+  background-color: initial;
+}
+
+.default-styles button {
+  appearance: button;
+}
+
+.poc-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.poc-layout-header {
+  padding: 0.5rem;
+}
+
+.poc-layout-header__title {
+  width: 100%;
+  max-width: 92rem;
+  margin-inline: auto;
+}
+
+.poc-layout-header__container {
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  background-color: #e5e7eb;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.poc-layout-header__title a {
+  color: #6e7786;
+  text-decoration: none;
+}
+
+@media (min-width: 700px) {
+  .poc-layout-header__container {
+    padding-inline: 3.5rem;
+  }
+}

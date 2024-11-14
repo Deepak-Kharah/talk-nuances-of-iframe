@@ -1,6 +1,8 @@
+import { PocLayout } from "@/components/PocLayout/PocLayout";
 import Head from "next/head";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
+import pocStyles from "../../styles/poc.module.css";
 
 const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
@@ -41,24 +43,43 @@ export default function LivePreview() {
         <title>Main App | LP POC w/ Post message</title>
       </Head>
 
-      <main>
-        <h1>Live preview with Hash</h1>
+      <PocLayout>
+        <main className={pocStyles["poc-container"]}>
+          <div>
+            <h1 className={pocStyles["poc-title"]}>Live preview with Hash</h1>
 
-        <h2>Send message</h2>
-        <p>Hash sent: {livePreviewHash}</p>
-        <form onSubmit={handleSubmit}>
-          <input name="message" type="text" placeholder="Type a message..." />
-          <button type="submit">Send</button>
-        </form>
+            <p className={pocStyles["url-info"]}>
+              Hash sent: {livePreviewHash}
+            </p>
+          </div>
 
-        <br />
-        <iframe
-          ref={iframeRef}
-          src="/user-page-with-hash"
-          width="600"
-          height="400"
-        />
-      </main>
+          <form className={pocStyles["message-form"]} onSubmit={handleSubmit}>
+            <span>
+              <label htmlFor="message" className={pocStyles["message-label"]}>
+                Send message
+              </label>
+              <input
+                className={pocStyles["message-input"]}
+                name="message"
+                type="text"
+                placeholder="Type a message..."
+              />
+            </span>
+            <button
+              className={pocStyles["message-send-message-action"]}
+              type="submit"
+            >
+              Send
+            </button>
+          </form>
+
+          <iframe
+            className={pocStyles["live-preview-window"]}
+            ref={iframeRef}
+            src="/user-page-with-hash"
+          />
+        </main>
+      </PocLayout>
     </>
   );
 }

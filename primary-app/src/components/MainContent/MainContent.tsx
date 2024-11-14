@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 export function MainContent() {
   return (
-    <main className={classNames(styles["main-section"])}>
+    <main className={classNames(styles["main-section"], "container")}>
       <section>
         <h2>Proofs of Concept (POCs)</h2>
 
