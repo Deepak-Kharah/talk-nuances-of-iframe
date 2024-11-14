@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import pocStyles from "../../styles/poc.module.css";
 
 const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
@@ -16,16 +17,8 @@ export default function Home() {
     }>
   ) {
     if (event.data.type === "hash") {
-      console.log("Hash received", event.data.payload);
       setHash(event.data.payload);
     }
-    //  else if (event.data.type === "change") {
-    //   // This statment will confuse you as if we are sending the data
-    //   // directly, what's the point of sending hash. This is just for
-    //   // demonstration purposes. Normally, you will run the function
-    //   // that will fetch the data from the server and update the UI.
-    //   setMessages((prev) => [...prev, event.data.payload]);
-    // }
   }
 
   useEffect(() => {
@@ -49,17 +42,21 @@ export default function Home() {
       <Head>
         <title>User App • LP POC w/ Post message</title>
       </Head>
-      <main>
-        <h1>I am the Iframe</h1>
-        <p>URL: {url}</p>
-        <p>Hash received: {hash}</p>
+      <main className={pocStyles["poc-container"]}>
+        <div>
+          <h1 className={pocStyles["poc-title"]}>I am the Iframe</h1>
+          <p className={pocStyles["url-info"]}>URL: {url}</p>
+          <p className={pocStyles["url-info"]}>Hash received: {hash}</p>
+        </div>
 
-        <h2>Messages</h2>
-        <ul>
-          {messages.map((message, index) => (
-            <li key={index}>{message}</li>
-          ))}
-        </ul>
+        <div>
+          <h2 className={pocStyles["messages-title"]}>Messages</h2>
+          <ul className={pocStyles.messages}>
+            {messages.map((message, index) => (
+              <li key={index}>{message}</li>
+            ))}
+          </ul>
+        </div>
       </main>
     </>
   );

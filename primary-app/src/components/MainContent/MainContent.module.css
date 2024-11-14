@@ -1,0 +1,69 @@
+.main-section > section > h2 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+.main-section > section > h2::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 0.25rem;
+  background-color: #dae0e9;
+  margin-top: 0.25rem;
+}
+
+.main-section {
+  display: grid;
+  gap: 4rem;
+  margin-top: 5rem;
+  max-width: 100rem;
+  margin-inline: auto;
+}
+
+.main-section > section {
+  display: grid;
+  gap: 2rem;
+}
+
+.main-section p.note {
+  color: #9ca3af;
+  border-left: 2px solid #dae0e9;
+  padding-left: 1rem;
+  font-size: 0.87rem;
+}
+
+.main-section p.note a {
+  color: #668cdf;
+  text-decoration: underline;
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .main-section > section > h2 {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+
+  .main-section p.note {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
