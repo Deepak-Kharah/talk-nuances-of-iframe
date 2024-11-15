@@ -1,7 +1,13 @@
 {
-  "name": "primary-app",
-  "version": "0.1.0",
+  "name": "nuances-of-iframe-primary-app",
+  "version": "1.0.0",
+  "description": "The main application that hosts the iframes. The application represents the headless CMS. It also contains some pages that represents the user's website to explain the problem one may face while building a live preview feature.",
   "private": true,
+  "author": {
+    "name": "Deepak Kharah",
+    "email": "42672761+Deepak-Kharah@users.noreply.github.com",
+    "url": "https://www.deepakkharah.com/"
+  },
   "scripts": {
     "dev": "next dev -p 5173",
     "build": "next build",
