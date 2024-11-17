@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import pocStyles from "../../styles/poc.module.css";
 import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
+import { useEffect, useState } from "react";
+import pocStyles from "../../styles/poc.module.css";
+import { socket } from "@/utils/socket";
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 export default function Home() {
   const [messages, setMessages] = useState<string[]>([]);
   const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
     setUrl(window.location.toString());
-    socket.on("chat message", (msg) => {
+    socket?.on("chat message", (msg) => {
       setMessages((prev) => {
         const newMessages = [...prev, msg];
         return newMessages;

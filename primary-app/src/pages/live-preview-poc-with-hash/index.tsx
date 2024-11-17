@@ -1,12 +1,10 @@
 import { PocLayout } from "@/components/PocLayout/PocLayout";
 import { pocs } from "@/content/pocs";
+import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
+import { socket } from "@/utils/socket";
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
-import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
-
-const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
 export default function LivePreview() {
   // We had to use the state to avoid hydration mismatch error.
@@ -19,7 +17,7 @@ export default function LivePreview() {
 
     // ! If you are here to understand the code, look at the if block only.
     if (process.env.NODE_ENV === "development") {
-      socket.emit(
+      socket?.emit(
         "chat message with hash",
         JSON.stringify({
           message: data.get("message"),

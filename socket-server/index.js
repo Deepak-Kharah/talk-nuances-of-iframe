@@ -20,21 +20,21 @@ io.on("connection", (socket) => {
   totalConnections++;
   console.log("New user connected. Total connections: " + totalConnections);
 
-  socket.on("chat message", (msg) => {
+  socket?.on("chat message", (msg) => {
     const { message } = JSON.parse(msg);
     console.log(`Message received: ${message}`);
     // Broadcast the message to all connected clients
     io.emit(`chat message`, message);
   });
 
-  socket.on("chat message with hash", (msg) => {
+  socket?.on("chat message with hash", (msg) => {
     const { hash, message } = JSON.parse(msg);
     console.log(`Message received: ${message}`);
     // Broadcast the message to all connected clients
     io.emit(`chat message with hash ${hash}`, message);
   });
 
-  socket.on("disconnect", () => {
+  socket?.on("disconnect", () => {
     totalConnections--;
     console.log("User disconnected. Total connections: " + totalConnections);
   });

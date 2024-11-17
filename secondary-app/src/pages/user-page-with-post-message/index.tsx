@@ -1,10 +1,8 @@
+import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
+import { socket } from "@/utils/socket";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
-import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
-
-const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
 export default function Home() {
   const [messages, setMessages] = useState<string[]>([]);
@@ -28,7 +26,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    socket.on(`chat message with hash ${hash}`, (msg) => {
+    socket?.on(`chat message with hash ${hash}`, (msg) => {
       setMessages((prev) => {
         return [...prev, msg];
       });
