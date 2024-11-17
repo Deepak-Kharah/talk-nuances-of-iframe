@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.0.3",
+    "advanced-broadcast-message": "^0.0.1-alpha.0",
     "classnames": "^2.5.1",
     "next": "14.2.15",
     "react": "^18",

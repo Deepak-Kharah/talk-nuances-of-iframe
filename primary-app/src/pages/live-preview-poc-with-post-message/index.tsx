@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
+import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
 
 const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
@@ -17,13 +18,23 @@ export default function LivePreviewWIthPostMessage() {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
 
-    socket.emit(
-      "chat message with hash",
-      JSON.stringify({
-        message: data.get("message"),
+    // ! If you are here to understand the code, look at the if block only.
+    if (process.env.NODE_ENV === "development") {
+      socket.emit(
+        "chat message with hash",
+        JSON.stringify({
+          message: data.get("message"),
+          hash: livePreviewHash,
+        })
+      );
+    } else {
+      // ! The code below is for the hosted version. You can ignore this code.
+      // ! This code is used to simulate the behaviour to avoid spamming the server.
+      advancedBroadcastMessage.send("chat-message-with-hash", {
         hash: livePreviewHash,
-      })
-    );
+        message: data.get("message"),
+      });
+    }
     e.currentTarget.reset();
   }
 
@@ -33,7 +44,10 @@ export default function LivePreviewWIthPostMessage() {
     const iframe = iframeRef.current;
 
     if (iframe) {
+      // We have used the setTimeout to simulate some underline process.
       setTimeout(() => {
+        // * This is the line that makes the magic happen.
+        // * We are sending the hash to the iframe using the postMessage API.
         iframe.contentWindow?.postMessage(
           {
             type: "hash",

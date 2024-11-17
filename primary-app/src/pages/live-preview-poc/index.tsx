@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useRef } from "react";
 import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
+import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
 
 const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
 
@@ -15,12 +16,20 @@ export default function LivePreview() {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
 
-    socket.emit(
-      "chat message",
-      JSON.stringify({
-        message: data.get("message"),
-      })
-    );
+    // ! If you are here to understand the code, look at the if block only.
+    if (process.env.NODE_ENV !== "development") {
+      socket.emit(
+        "chat message",
+        JSON.stringify({
+          message: data.get("message"),
+        })
+      );
+    } else {
+      // ! The code below is for the hosted version. You can ignore this code.
+      // ! This code is used to simulate the behaviour to avoid spamming the server.
+      advancedBroadcastMessage.send("chat-message", data.get("message"));
+    }
+
     e.currentTarget.reset();
   }
 
