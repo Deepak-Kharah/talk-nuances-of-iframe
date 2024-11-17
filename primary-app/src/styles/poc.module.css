@@ -145,3 +145,14 @@ iframe.live-preview-window {
     font-size: 1.25rem;
   }
 }
+
+.iframes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}

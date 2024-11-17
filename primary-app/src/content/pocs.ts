@@ -29,4 +29,9 @@ export const pocs: PocContent[] = [
       "To avoid the different origin error, we used the Post Message API to send the hash to the iframe.",
     link: "/live-preview-poc-with-post-message",
   },
+  {
+    name: "Iframe History",
+    description: "A demonstration of how the History APIs work in iframes.",
+    link: "/history/0",
+  },
 ];
