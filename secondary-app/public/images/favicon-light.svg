@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="698" height="698"><svg width="698" height="698" viewBox="0 0 698 698" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M384.51 30C384.51 23.3726 389.882 18 396.51 18H668C674.627 18 680 23.3726 680 30V301.49C680 308.118 674.627 313.49 668 313.49H396.51C389.882 313.49 384.51 308.118 384.51 301.49V30Z" stroke="#4D3A6D" stroke-width="36"></path>
+<path d="M366.51 396.51C366.51 379.941 379.941 366.51 396.51 366.51H668C684.568 366.51 698 379.941 698 396.51V668C698 684.569 684.568 698 668 698H396.51C379.941 698 366.51 684.569 366.51 668V396.51Z" fill="#4D3A6D"></path>
+<path d="M0 396.51C0 379.941 13.4315 366.51 30 366.51H301.49C318.059 366.51 331.49 379.941 331.49 396.51V668C331.49 684.569 318.059 698 301.49 698H30C13.4315 698 0 684.569 0 668V396.51Z" fill="#4D3A6D"></path>
+<path d="M0 30C0 13.4315 13.4315 0 30 0H301.49C318.059 0 331.49 13.4315 331.49 30V301.49C331.49 318.059 318.059 331.49 301.49 331.49H30C13.4315 331.49 0 318.059 0 301.49V30Z" fill="#4D3A6D"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
