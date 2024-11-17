@@ -1,7 +1,13 @@
 {
-  "name": "secondary-app",
-  "version": "0.1.0",
+  "name": "nuances-of-iframe-secondary-app",
+  "version": "1.0.0",
+  "description": "The application that is hosted inside the iframe. This application represents the user's website hosted on a different domain.",
   "private": true,
+  "author": {
+    "name": "Deepak Kharah",
+    "email": "42672761+Deepak-Kharah@users.noreply.github.com",
+    "url": "https://www.deepakkharah.com/"
+  },
   "scripts": {
     "dev": "next dev -p 5174",
     "build": "next build",

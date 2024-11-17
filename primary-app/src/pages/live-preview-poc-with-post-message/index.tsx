@@ -1,5 +1,7 @@
 import { PocLayout } from "@/components/PocLayout/PocLayout";
+import { pocs } from "@/content/pocs";
 import { getUserWebsiteUrl } from "@/utils/getUserWebsiteUrl";
+import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import pocStyles from "../../styles/poc.module.css";
@@ -47,7 +49,9 @@ export default function LivePreviewWIthPostMessage() {
     <PocLayout>
       <main className={pocStyles["poc-container"]}>
         <div>
-          <h1>Live preview with Post message</h1>
+          <h1 className={pocStyles["poc-title"]}>
+            Live preview with Post message
+          </h1>
 
           <p className={pocStyles["url-info"]}>Hash sent: {livePreviewHash}</p>
         </div>
@@ -77,6 +81,17 @@ export default function LivePreviewWIthPostMessage() {
           ref={iframeRef}
           src={getUserWebsiteUrl("user-page-with-post-message")}
         />
+
+        <details className={pocStyles["poc-detail"]}>
+          <summary>Explanation</summary>
+          <div>
+            <p>
+              In this POC, we use the Post Message APIs to pass the hash to the
+              iframe. Since this API works cross-origin, we fixed the error we
+              got in the <Link href={pocs[2].link}>previous POC</Link>.
+            </p>
+          </div>
+        </details>
       </main>
     </PocLayout>
   );

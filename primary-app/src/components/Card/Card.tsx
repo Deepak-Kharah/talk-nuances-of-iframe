@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Card.module.css";
 
 interface CardProps {
@@ -5,6 +6,7 @@ interface CardProps {
   description: string;
   link: string;
   cta: string;
+  internalLink?: boolean;
 }
 
 export function Card(props: CardProps) {
@@ -13,9 +15,15 @@ export function Card(props: CardProps) {
       <div className={styles["card-content"]}>
         <h3 className={styles["card-heading"]}>{props.title}</h3>
         <p className={styles["card-body"]}>{props.description}</p>
-        <a href={props.link} className={styles["card-cta"]}>
-          {props.cta ?? "Learn More"}
-        </a>
+        {props.internalLink ? (
+          <Link className={styles["card-cta"]} href={props.link}>
+            {props.cta ?? "Learn More"}
+          </Link>
+        ) : (
+          <a href={props.link} className={styles["card-cta"]}>
+            {props.cta ?? "Learn More"}
+          </a>
+        )}
       </div>
     </div>
   );

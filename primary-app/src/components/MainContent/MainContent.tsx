@@ -23,6 +23,7 @@ export function MainContent() {
         <div className={styles.cards}>
           {pocs.map((poc) => (
             <Card
+              internalLink
               key={poc.name}
               title={poc.name}
               description={poc.description}

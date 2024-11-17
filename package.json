@@ -1,0 +1,20 @@
+{
+  "name": "nuances-of-iframe-companion",
+  "version": "1.0.0",
+  "description": "This project is a companion to the talk presented at React India 2024 - Remote Edition. The talk was about the journey of building a live preview feature for a headless CMS and what we learned along the way.",
+  "main": "index.js",
+  "author": {
+    "name": "Deepak Kharah",
+    "email": "42672761+Deepak-Kharah@users.noreply.github.com",
+    "url": "https://www.deepakkharah.com/"
+  },
+  "scripts": {
+    "dev": "cd primary-app && npm run dev & cd secondary-app && npm run dev & cd socket-server && npm run dev",
+    "install": "cd primary-app && npm install & cd secondary-app && npm install & cd socket-server && npm install",
+    "setup-env": "cd primary-app && cp .env.example .env.local & cd secondary-app && cp .env.example .env.local"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "run-p": "^0.0.0"
+  }
+}

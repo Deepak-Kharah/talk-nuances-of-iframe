@@ -3,6 +3,8 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import pocStyles from "../../styles/poc.module.css";
 
 import { PocLayout } from "@/components/PocLayout/PocLayout";
+import { pocs } from "@/content/pocs";
+import Link from "next/link";
 import { io } from "socket.io-client";
 
 const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
@@ -43,7 +45,9 @@ export default function LivePreview() {
     <PocLayout>
       <main className={pocStyles["poc-container"]}>
         <div>
-          <h1 className={pocStyles["poc-title"]}>Live preview with Hash</h1>
+          <h1 className={pocStyles["poc-title"]}>
+            Live preview with Hash with different origin
+          </h1>
 
           <p className={pocStyles["url-info"]}>Hash sent: {livePreviewHash}</p>
         </div>
@@ -73,6 +77,25 @@ export default function LivePreview() {
           ref={iframeRef}
           src={getUserWebsiteUrl("user-page")}
         />
+
+        <details className={pocStyles["poc-detail"]}>
+          <summary>Explanation</summary>
+          <div>
+            <p>
+              In this POC, we pass the hash to the iframe by setting it in the
+              window object (Why are we doing that? Read the explanation of the{" "}
+              <Link href={pocs[1].link}>previous POC</Link>). This method is a
+              security risk and is not allowed when the parent and iframes are
+              hosted on different origins. You can check the error in the
+              browser&apos;s console.
+            </p>
+            <p>
+              Hence, we found an alternative to setting the values to the window
+              object, demonstrated in the{" "}
+              <Link href={pocs[3].link}>following POC</Link>.
+            </p>
+          </div>
+        </details>
       </main>
     </PocLayout>
   );
