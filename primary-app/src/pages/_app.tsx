@@ -28,12 +28,12 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:url"
-          content="https://nuances-of-iframe-sec.deepakkharah.com"
+          content="https://nuances-of-iframe.deepakkharah.com"
         />
         <meta property="og:site_name" content="Deepak Kharah" />
         <meta
           property="og:image"
-          content="https://nuances-of-iframe-sec.deepakkharah.com/images/og-image.png"
+          content="https://nuances-of-iframe.deepakkharah.com/images/og-image.png"
         />
         <meta property="og:image:alt" content="Nuances of Iframe" />
         <meta property="og:type" content="website" />
@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           name="twitter:image"
-          content="https://nuances-of-iframe-sec.deepakkharah.com/images/og-image.png"
+          content="https://nuances-of-iframe.deepakkharah.com/images/og-image.png"
         />
 
         <link
