@@ -16,7 +16,7 @@ export default function LivePreviewWIthPostMessage() {
     const data = new FormData(e.currentTarget);
 
     // ! If you are here to understand the code, look at the if block only.
-    if (process.env.NODE_ENV !== "development") {
+    if (process.env.NODE_ENV === "development") {
       socket?.emit(
         "chat message with hash",
         JSON.stringify({
