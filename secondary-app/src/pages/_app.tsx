@@ -80,7 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
           media="(prefers-color-scheme: dark)"
         />
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 }

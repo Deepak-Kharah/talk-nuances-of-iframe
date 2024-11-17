@@ -1,11 +1,10 @@
 import { PocLayout } from "@/components/PocLayout/PocLayout";
 import { pocs } from "@/content/pocs";
-import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
 import { getUserWebsiteUrl } from "@/utils/getUserWebsiteUrl";
+import { socket } from "@/utils/socket";
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import pocStyles from "../../styles/poc.module.css";
-import { socket } from "@/utils/socket";
 
 export default function LivePreviewWIthPostMessage() {
   // We had to use the state to avoid hydration mismatch error.
@@ -17,7 +16,7 @@ export default function LivePreviewWIthPostMessage() {
     const data = new FormData(e.currentTarget);
 
     // ! If you are here to understand the code, look at the if block only.
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV !== "development") {
       socket?.emit(
         "chat message with hash",
         JSON.stringify({
@@ -28,10 +27,16 @@ export default function LivePreviewWIthPostMessage() {
     } else {
       // ! The code below is for the hosted version. You can ignore this code.
       // ! This code is used to simulate the behaviour to avoid spamming the server.
-      advancedBroadcastMessage.send("chat-message-with-hash", {
-        hash: livePreviewHash,
-        message: data.get("message"),
-      });
+      iframeRef.current?.contentWindow?.postMessage(
+        {
+          type: "message",
+          payload: {
+            hash: livePreviewHash,
+            message: data.get("message"),
+          },
+        },
+        process.env.NEXT_PUBLIC_SECONDARY_APP_URL
+      );
     }
     e.currentTarget.reset();
   }
@@ -51,9 +56,9 @@ export default function LivePreviewWIthPostMessage() {
             type: "hash",
             payload: hash,
           },
-          "*"
+          process.env.NEXT_PUBLIC_SECONDARY_APP_URL
         );
-      }, 200);
+      }, 1500);
     }
   }, []);
 

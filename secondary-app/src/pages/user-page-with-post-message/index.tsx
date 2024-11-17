@@ -1,7 +1,6 @@
-import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
 import { socket } from "@/utils/socket";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import pocStyles from "../../styles/poc.module.css";
 
 export default function Home() {
@@ -9,21 +8,50 @@ export default function Home() {
   const [url, setUrl] = useState<string>("");
   const [hash, setHash] = useState<string>("");
 
-  function handleIncomingMessage(
-    event: MessageEvent<{
-      type: string;
-      payload: string;
-    }>
-  ) {
-    if (event.data.type === "hash") {
-      setHash(event.data.payload);
-    }
-  }
+  const handleIncomingMessage = useCallback(
+    function handleIncomingMessage(
+      event: MessageEvent<
+        | {
+            type: "hash";
+            payload: string;
+          }
+        // ! For the hosted version, we are simulating the behaviour to avoid spamming the server.
+        // ! You can ignore this code, if you are here just to understand the code.
+        | {
+            type: "message";
+            payload: {
+              hash: string;
+              message: string;
+            };
+          }
+      >
+    ) {
+      if (event.data.type === "hash") {
+        setHash(event.data.payload);
+      }
+
+      // ! For the hosted version, we are simulating the behaviour to avoid spamming the server.
+      // ! You can ignore this code, if you are here just to understand the code.
+      if (event.data.type === "message") {
+        const { message } = event.data.payload;
+        if (event.data.payload.hash === hash) {
+          setMessages((prev) => {
+            return [...prev, message];
+          });
+        }
+      }
+    },
+    [hash]
+  );
 
   useEffect(() => {
     window.addEventListener("message", handleIncomingMessage);
     setUrl(window.location.toString());
-  }, []);
+
+    return () => {
+      window.removeEventListener("message", handleIncomingMessage);
+    };
+  }, [handleIncomingMessage]);
 
   useEffect(() => {
     socket?.on(`chat message with hash ${hash}`, (msg) => {
@@ -32,23 +60,8 @@ export default function Home() {
       });
     });
 
-    // ! For the hosted version, we are simulating the behaviour to avoid spamming the server.
-    // ! You can ignore this code, if you are here just to understand the code.
-    const changeMessageEvent = advancedBroadcastMessage.on<{
-      hash: string;
-      message: string;
-    }>("chat-message-with-hash", ({ data }) => {
-      if (data.hash === hash) {
-        setMessages((prev) => {
-          return [...prev, data.message];
-        });
-      }
-    });
-    // ! End of the simulation code.
-
     return () => {
       socket?.off(`chat message with hash ${hash}`);
-      changeMessageEvent.unregister();
     };
   }, [hash]);
   return (
