@@ -13,7 +13,7 @@ export default function Home() {
     setTimeout(() => {
       const livePreviewHash = window.hash as string;
       setHash(livePreviewHash);
-    }, 300);
+    }, 1500);
   }, []);
 
   useEffect(() => {

@@ -46,7 +46,7 @@ export default function LivePreview() {
         // * Here we are setting the hash directly. It only works when the parent and the iframe have the same origin.
         iframeRef.current.contentWindow.hash = hash;
       }
-    }, 200);
+    }, 1500);
   }, []);
 
   return (

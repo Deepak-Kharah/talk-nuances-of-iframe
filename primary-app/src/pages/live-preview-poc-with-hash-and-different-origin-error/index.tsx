@@ -49,7 +49,7 @@ export default function LivePreview() {
         // * If you remove this line, the error will disappear. However, the hash will not be passed to the iframe.
         iframeRef.current.contentWindow.hash = hash;
       }
-    }, 200);
+    }, 1500);
   }, []);
 
   return (
@@ -99,6 +99,11 @@ export default function LivePreview() {
               security risk and is not allowed when the parent and iframes are
               hosted on different origins. You can check the error in the
               browser&apos;s console.
+            </p>
+            <p>
+              You should see an Uncaught SecurityError. If you don&apos; see the
+              error, it may be due to iframe loading speed. Refresh the page and
+              you should see an error.
             </p>
             <p>
               Hence, we found an alternative to setting the values to the window
