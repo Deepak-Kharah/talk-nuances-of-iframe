@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import pocStyles from "../../styles/poc.module.css";
 import { advancedBroadcastMessage } from "@/utils/advanced-broadcast-message";
 import { socket } from "@/utils/socket";
+import { useEffect, useState } from "react";
+import pocStyles from "../../styles/poc.module.css";
 
 export default function Home() {
   const [messages, setMessages] = useState<string[]>([]);
@@ -39,7 +38,7 @@ export default function Home() {
     // ! End of the simulation code.
 
     return () => {
-      socket.off(`chat message with hash ${hash}`);
+      socket?.off(`chat message with hash ${hash}`);
       changeMessageEvent.unregister();
     };
   }, [hash]);

@@ -47,7 +47,7 @@ export default function Home() {
     // ! End of the simulation code.
 
     return () => {
-      socket.off(`chat message with hash ${hash}`);
+      socket?.off(`chat message with hash ${hash}`);
       changeMessageEvent.unregister();
     };
   }, [hash]);

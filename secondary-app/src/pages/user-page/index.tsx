@@ -31,7 +31,7 @@ export default function Home() {
     // ! End of the simulation code.
 
     return () => {
-      socket.off("chat message");
+      socket?.off("chat message");
       changeMessageEvent.unregister();
     };
   }, []);
