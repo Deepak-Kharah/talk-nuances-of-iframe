@@ -21,6 +21,13 @@
   margin-inline: auto;
 }
 
+.youtube-video-frame {
+  border-color: transparent;
+  width: 100%;
+  max-width: 50rem;
+  aspect-ratio: 16/9;
+}
+
 .main-section > section {
   display: grid;
   gap: 2rem;
