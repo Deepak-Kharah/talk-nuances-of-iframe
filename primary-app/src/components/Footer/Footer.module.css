@@ -7,6 +7,15 @@
   margin-top: 4rem;
 }
 
+.footer a {
+  color: #6e7786;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 700px) {
   .footer {
     font-size: 1rem;
