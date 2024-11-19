@@ -8,6 +8,18 @@ export function MainContent() {
   return (
     <main className={classNames(styles["main-section"], "container")}>
       <section>
+        <h2>The Talk is available on YouTube</h2>
+
+        <iframe
+          src="https://www.youtube.com/embed/eRMmvXcCLwU?si=0NIRcaV3axA-f9SK&amp;start=8952"
+          title="Nuances of Iframe available on YouTube"
+          className={styles["youtube-video-frame"]}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </section>
+      <section>
         <h2>Proofs of Concept (POCs)</h2>
 
         <p className={styles.note}>
