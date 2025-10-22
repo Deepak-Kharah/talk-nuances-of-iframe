@@ -79,6 +79,31 @@ export default function App({ Component, pageProps }: AppProps) {
           sizes="any"
           media="(prefers-color-scheme: dark)"
         />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Deepak Kharah",
+              url: "https://nuances-of-iframe-sec.deepakkharah.com",
+              author: {
+                "@type": "Person",
+                name: "Deepak Kharah",
+                url: "https://www.deepakkharah.com/",
+              },
+              description:
+                "A companion application of the talk presented at React India 2024 - Remote Edition. The talk was about the journey of building a live preview feature for a headless CMS and what we learned along the way.",
+              image: {
+                "@type": "ImageObject",
+                url: "https://nuances-of-iframe-sec.deepakkharah.com/images/og-card.png",
+                width: 1200,
+                height: 630,
+              },
+            }),
+          }}
+        />
       </Head>
       <Component {...pageProps} />
     </>
