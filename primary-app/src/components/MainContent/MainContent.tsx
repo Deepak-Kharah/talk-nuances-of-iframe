@@ -11,7 +11,7 @@ export function MainContent() {
         <h2>The Talk is available on YouTube</h2>
 
         <iframe
-          src="https://www.youtube.com/embed/eRMmvXcCLwU?si=0NIRcaV3axA-f9SK&amp;start=8952"
+          src="https://www.youtube.com/embed/PPgJ7Q4kAa8?si=Vkd0PbqV_XdyvnZ9"
           title="Nuances of Iframe available on YouTube"
           className={styles["youtube-video-frame"]}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -70,6 +70,12 @@ export function MainContent() {
             description="Excalidraw is a virtual collaborative whiteboard tool that lets you easily sketch diagrams that have a hand-drawn feel to them."
             link="https://excalidraw.com/"
             cta="Visit website"
+          />
+          <Card
+            title="PowerPoint"
+            description="PowerPoint presentation is one of the most powerful tool I love using to present my ideas. Her's the link to my presentation."
+            link="https://drive.google.com/file/d/1cT0lpwiJGKHNHpOx7ffMCgZGkx4Xtys2/view?usp=sharing/"
+            cta="View Presentation"
           />
         </div>
       </section>
