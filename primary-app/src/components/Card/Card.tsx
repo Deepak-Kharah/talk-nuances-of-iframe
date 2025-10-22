@@ -20,7 +20,12 @@ export function Card(props: CardProps) {
             {props.cta ?? "Learn More"}
           </Link>
         ) : (
-          <a href={props.link} className={styles["card-cta"]}>
+          <a
+            href={props.link}
+            className={styles["card-cta"]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {props.cta ?? "Learn More"}
           </a>
         )}
