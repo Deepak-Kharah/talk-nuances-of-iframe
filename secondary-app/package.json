@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "advanced-broadcast-message": "^0.0.1-alpha.0",
-    "next": "^14.2.33",
+    "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",
     "socket.io-client": "^4.8.0"
